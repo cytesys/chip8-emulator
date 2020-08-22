@@ -1,0 +1,5 @@
+Chip8/Chip8.pyproj
+Chip8/modules/__pycache__
+Chip8/roms/*.ch8
+.vs
+Chip8.sln

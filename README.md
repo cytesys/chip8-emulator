@@ -1,2 +1,2 @@
-# chip8-emulator
-A CHIP8 emulator in python
+# CHIP8 Emulator
+This is a CHIP8 emulator written in python. It works, but is very slow.
