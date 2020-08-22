@@ -1,6 +1,6 @@
 # CHIP8 Emulator
 This is a CHIP8 emulator written in python. It works, but it is very slow.
-No third-party libraries is needed.
+No third-party libraries are needed.
 
 ## How to run it?
 First, you need to download a CHIP8 ROM from somewhere, and put it in the `Chip8/roms/` folder. \
