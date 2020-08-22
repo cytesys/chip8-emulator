@@ -1,3 +1,5 @@
+from pathlib import Path
+
 class Memory(object):
     """The CHIP8 memory"""
     def __init__(self):
@@ -66,7 +68,8 @@ class Memory(object):
         """
         Method to load a user program into memory.
         """
-        with open(filename, "rb") as file:
+        path = Path(__file__).parent / filename
+        with path.open(mode='rb') as file:
             index = 0
             byte = file.read(1)
 

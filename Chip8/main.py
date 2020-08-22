@@ -18,7 +18,7 @@ class App(object):
 
         # Create new Memory object, and load a file
         self.mem = Memory()
-        self.mem.load("roms/Maze.ch8")
+        self.mem.load("../roms/Maze.ch8")
 
         # Createnew Chip object
         self.chip = Chip(self.mem)
