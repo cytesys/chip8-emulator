@@ -11,6 +11,9 @@
     <OutputPath>.</OutputPath>
     <Name>Chip8</Name>
     <RootNamespace>Chip8</RootNamespace>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <CommandLineArguments>roms/Airplane.ch8</CommandLineArguments>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,8 +40,13 @@
     <Folder Include="roms\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="roms\15puzzle.ch8" />
+    <Content Include="roms\Airplane.ch8" />
+    <Content Include="roms\Bowling.ch8" />
+    <Content Include="roms\Connect4.ch8" />
     <Content Include="roms\Maze.ch8" />
     <Content Include="roms\Sierpinski.ch8" />
+    <Content Include="roms\Tetris.ch8" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

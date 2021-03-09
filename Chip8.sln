@@ -9,6 +9,7 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Description = A Chip8 emulator written in python.
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BF56E925-5E78-4283-8DBA-CE35366FC381}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

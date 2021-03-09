@@ -64,12 +64,11 @@ class Memory(object):
         else:
             raise Exception(f"Tried to write to non-accessable memory! mem@{hex(address)}")
 
-    def load(self, filename):
+    def load(self, file):
         """
         Method to load a user program into memory.
         """
-        path = Path(__file__).parent / filename
-        with path.open(mode='rb') as file:
+        with open(file, 'rb') as file:
             index = 0
             byte = file.read(1)
 

@@ -1,4 +1,6 @@
 import tkinter as tk
+import argparse
+import os
 from modules.Chip import Chip
 from modules.Memory import Memory
 
@@ -6,7 +8,7 @@ class App(object):
     """
     Main widget, containing the GUI, Memory and Chip.
     """
-    def __init__(self, master):
+    def __init__(self, master, file):
         """
         Initialization of the main widget.
         """
@@ -18,7 +20,7 @@ class App(object):
 
         # Create new Memory object, and load a file
         self.mem = Memory()
-        self.mem.load("../roms/Maze.ch8")
+        self.mem.load(file)
 
         # Createnew Chip object
         self.chip = Chip(self.mem)
@@ -40,8 +42,7 @@ class App(object):
                 for x in range(64):
                     if self.chip.screen[y * 64 + x] > 0:
                         self.canvas.create_rectangle(x * 10, y * 10, (x * 10) + 10, (y * 10) + 10, fill="white")
-                    else:
-                        self.canvas.create_rectangle(x * 10, y * 10, (x * 10) + 10, (y * 10) + 10, fill="black")
+
             self.chip.screen_needs_update = False
         
         # Trigger a new run cycle
@@ -124,6 +125,11 @@ class App(object):
             self.chip.key[0xf] = 0
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Chip8 emulator')
+    parser.add_argument('file')
+    args = parser.parse_args()
+    file = os.path.abspath(args.file)
+
     root = tk.Tk()
-    app = App(root)
+    app = App(root, file)
     root.mainloop()
