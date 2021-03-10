@@ -1,6 +1,6 @@
 [![CodeQL](https://github.com/cytesys/chip8-emulator/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/cytesys/chip8-emulator/actions/workflows/codeql-analysis.yml)
 # CHIP8 Emulator
-This is a CHIP8 emulator written in python. It works without installing any third-party libraries.
+This is a CHIP8 emulator written in python. It works without any third-party libraries, but sound is not implemented.
 Python 3 is required, python 3.8 or higher is recommended.
 
 ## Usage
