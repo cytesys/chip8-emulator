@@ -1,8 +1,8 @@
 import tkinter as tk
 import argparse
 import os
-from modules.Chip import Chip
-from modules.Memory import Memory
+from modules import Chip
+from modules import Memory
 
 class App(object):
     """
@@ -20,7 +20,12 @@ class App(object):
 
         # Create new Memory object, and load a file
         self.mem = Memory()
-        self.mem.load(file)
+
+        try:
+            self.mem.load(file)
+        except FileNotFoundError:
+            print("The file does not exist!")
+            exit(1)
 
         # Createnew Chip object
         self.chip = Chip(self.mem)

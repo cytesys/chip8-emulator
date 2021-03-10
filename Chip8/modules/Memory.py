@@ -1,5 +1,3 @@
-from pathlib import Path
-
 class Memory(object):
     """The CHIP8 memory"""
     def __init__(self):
@@ -9,7 +7,7 @@ class Memory(object):
 
         # The memory originally accessible to the user
         # is about 0x800 bytes.
-        self._mem = [0] * 0x800
+        self._mem = [0] * 0xfff
 
         # This is just pixel data for the font.
         self.fontset = [
@@ -42,7 +40,7 @@ class Memory(object):
             # Used by the font data
             return self.fontset[address]
         
-        elif (address >= 0x200) and (address < 0xea0):
+        elif (address >= 0x50) and (address < 0xea0):
             # Used by the user program.
             return self._mem[address - 0x200]
         else:
@@ -69,11 +67,11 @@ class Memory(object):
         Method to load a user program into memory.
         """
         with open(file, 'rb') as file:
-            index = 0
+            index = 0x200
             byte = file.read(1)
 
             while byte:
-                self._mem[index] = int.from_bytes(byte, byteorder="big", signed=False)
+                self.write(index, int.from_bytes(byte, byteorder="big", signed=False))
                 index += 1
                 byte = file.read(1)
 

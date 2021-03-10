@@ -54,7 +54,7 @@ class Chip(object):
         elif opcode == 0x00ee:
             # 0x00EE
             # Return from subroutine
-            self.PC = ((self.stack[self.SP - 1] << 8) | self.stack[self.SP]) + 2
+            self.PC = ((self.stack[self.SP - 2] << 8) | self.stack[self.SP - 1]) + 2
             self.SP -= 2
 
         elif (opcode & 0xf000) == 0x0000:
@@ -70,8 +70,8 @@ class Chip(object):
         elif (opcode & 0xf000) == 0x2000:
             # 0x2NNN
             # Call subroutine at NNN
-            self.stack[self.SP + 1] = (self.PC & 0xff00) >> 8
-            self.stack[self.SP + 2] = self.PC & 0x00ff
+            self.stack[self.SP] = (self.PC & 0xff00) >> 8
+            self.stack[self.SP + 1] = self.PC & 0x00ff
             self.SP += 2
             self.PC = opcode & 0x0fff
 
@@ -280,12 +280,17 @@ class Chip(object):
             for i in range(n):
                 index = ((self.V[y] + i) * 64) + self.V[x]
                 row = self.mem.read(self.I + i)
+
                 for j in range(8):
-                    oldpixel = self.screen[(index + j) % (64 * 32)]
+                    if (index + j) >= len(self.screen):
+                        break
 
-                    self.screen[(index + j) % (64 * 32)] ^= (row >> (7 - j)) & 0x1
+                    oldpixel = self.screen[(index + j)]
+                    newpixel = (row >> (7 - j)) & 0x1
 
-                    if (self.V[0xf] == 0) and (self.screen[(index + j) % (64 * 32)] != oldpixel):
+                    self.screen[(index + j)] = oldpixel ^ newpixel
+
+                    if (oldpixel == 1 and newpixel == 1):
                         # Collision
                         self.V[0xf] = 1
 
@@ -367,6 +372,7 @@ class Chip(object):
                 x = (opcode & 0x0f00) >> 8
 
                 self.I += self.V[x]
+                self.I %= 0x10000
 
                 self.PC += 2
             
@@ -375,8 +381,8 @@ class Chip(object):
                 # Sets I to the address of character in VX
                 x = (opcode & 0x0f00) >> 8
 
-                assert self.V[x] < 16
                 self.I = self.V[x] * 5
+                self.I %= 0x10000
 
                 self.PC += 2
 
@@ -407,7 +413,7 @@ class Chip(object):
                 x = (opcode & 0x0f00) >> 8
 
                 for i in range(x + 1):
-                    self.V[i] = self.mem.read(self.I - i)
+                    self.V[i] = self.mem.read(self.I + i)
 
                 self.PC += 2
 

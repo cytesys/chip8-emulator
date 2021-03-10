@@ -12,7 +12,7 @@
     <Name>Chip8</Name>
     <RootNamespace>Chip8</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>roms/Airplane.ch8</CommandLineArguments>
+    <CommandLineArguments>roms/Hidden.ch8</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -42,9 +42,12 @@
   <ItemGroup>
     <Content Include="roms\15puzzle.ch8" />
     <Content Include="roms\Airplane.ch8" />
+    <Content Include="roms\Blinky.ch8" />
     <Content Include="roms\Bowling.ch8" />
     <Content Include="roms\Connect4.ch8" />
+    <Content Include="roms\Hidden.ch8" />
     <Content Include="roms\Maze.ch8" />
+    <Content Include="roms\Picture.ch8" />
     <Content Include="roms\Sierpinski.ch8" />
     <Content Include="roms\Tetris.ch8" />
   </ItemGroup>
