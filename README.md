@@ -4,7 +4,7 @@ This is a CHIP8 emulator written in python. It works without any third-party lib
 Python 3 is required, python 3.8 or higher is recommended.
 
 ## Usage
-You need to run main.py with the path to the file as the argument.
+You need to run main.py with the path to the file as the argument. It is located in the `Chip8` folder.
 ```bash
 py main.py <file>
 ```
