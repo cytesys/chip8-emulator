@@ -20,4 +20,4 @@ A 0 B F   |   Z X C V
 ```
 
 ## ROMs
-There are a few ROMs in the roms folder, but I do not own any of them. They were copied from [dmatlack's github repository](https://github.com/dmatlack/chip8/tree/master/roms).
+There are a few ROMs in the `Chip8/roms` folder, but I do not own any of them. They were copied from [dmatlack's github repository](https://github.com/dmatlack/chip8/tree/master/roms).
