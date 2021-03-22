@@ -38,7 +38,7 @@ class Chip(object):
         opcode = (self.mem.read(self.PC) << 8) | self.mem.read(self.PC+1)
 
         # For debugging purposes
-        #print(f"Opcode: {hex(opcode)} @ Address: {hex(self.PC)}")
+        #print(f"Opcode: {hex(opcode)} @ Address: {hex(self.PC)} | I = {hex(self.I)}")
 
         # Decode the opcode
         if opcode == 0x00e0:
@@ -188,10 +188,10 @@ class Chip(object):
                 sum = self.V[x] - self.V[y]
                 if sum < 0:
                     # Borrow
-                    self.V[0xf] = 1
+                    self.V[0xf] = 0
                     sum += 256
                 else:
-                    self.V[0xf] = 0
+                    self.V[0xf] = 1
 
                 self.V[x] = sum
                 self.PC += 2

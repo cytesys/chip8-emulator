@@ -12,7 +12,7 @@
     <Name>Chip8</Name>
     <RootNamespace>Chip8</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>roms/Hidden.ch8</CommandLineArguments>
+    <CommandLineArguments>roms/Sierpinski.ch8</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <IsWindowsApplication>False</IsWindowsApplication>
   </PropertyGroup>
