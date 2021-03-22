@@ -372,7 +372,6 @@ class Chip(object):
                 x = (opcode & 0x0f00) >> 8
 
                 self.I += self.V[x]
-                self.I %= 0x10000
 
                 self.PC += 2
             
@@ -382,7 +381,6 @@ class Chip(object):
                 x = (opcode & 0x0f00) >> 8
 
                 self.I = self.V[x] * 5
-                self.I %= 0x10000
 
                 self.PC += 2
 
